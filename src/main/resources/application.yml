@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: spinehr
+  main:
+    banner-mode: off
+
+server:
+  port: 8995
+

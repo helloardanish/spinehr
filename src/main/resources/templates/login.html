@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login</h2>
+    <form id="loginForm">
+        
+        
+        <!-- <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br> -->
+
+
+        <label for="userid">User: </label>
+        <select id="userid">
+            <option value="default">Select User</option>
+            <option value="aaron">Aaron</option>
+            <option value="amal">Amal</option>
+            <option value="anusha">Anusha</option>
+            <option value="ar">Danish</option>
+            <option value="badal">Badal</option>
+            <option value="bryson">Bryson</option>
+            <option value="deepanjali">Deepanjli</option>
+            <option value="gaurang">Gaurang</option>
+            <option value="himanshug">Himasha G</option>
+            <option value="johnson">Johnson</option>
+            <option value="kumara">Kumara</option>
+            <option value="mohana">Mohana</option>
+            <option value="pankaj">Pankaj</option>
+            <option value="pranav">Pranav</option>
+            <option value="prateek">Prateek</option>
+            <option value="saurabh">Saurabh</option>
+            <option value="shyam">Shyam</option>
+            <option value="siddhi">Siddhi</option>
+        </select>
+
+
+        <label for="actiontype">Action: </label>
+        <select id="actiontype">
+            <option value="default">Select action</option>
+            <option value="in">Mark In</option>
+            <option value="out">Mark Out</option>
+        </select>
+
+        <button type="submit" onclick="doAction()">Submit</button>
+    </form>
+
+    <script>
+
+        function doAction() {
+
+            console.log('doAction called');
+
+            // const username = document.getElementById('username').value;
+            // const password = document.getElementById('password').value;
+
+            // console.log('Username: ' + username);
+            // console.log('Password:' + password);
+
+            const userid = document.getElementById('userid').value;
+            const actionType = document.getElementById('actiontype').value;
+
+            console.log('User ID: ' + userid);
+            console.log('Action Type: ' + actionType);
+
+            // Call the API with the selected script ID
+            fetch(`/mark-in-out/${userid}/${actionType}`)
+                .then(
+                    response => response.text()
+                )
+                .then(
+                    data => {
+                        console.log("Data returned: " +data);
+                        alert(data);
+                    }
+                )
+                .catch(error => console.error('Error:', error));
+        }
+
+        // document.getElementById('loginForm').addEventListener('submit', function(event) {
+        //     event.preventDefault(); // Prevent the default form submission
+
+        //     const username = document.getElementById('username').value;
+        //     const password = document.getElementById('password').value;
+
+        //     // Construct the URL with query parameters
+        //     const url = `/user-login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
+
+        //     // Call the API using GET method
+        //     fetch(url, {
+        //         method: 'GET',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         }
+        //     })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         // Handle the response data
+        //         console.log(data);
+        //         if (data.success) {
+        //             alert('Login successful!');
+        //         } else {
+        //             alert('Login failed: ' + data.message);
+        //         }
+        //     })
+        //     .catch(error => {
+        //         console.error('Error:', error);
+        //         alert('An error occurred. Please try again.');
+        //     });
+        // });
+    </script>
+</body>
+</html>
